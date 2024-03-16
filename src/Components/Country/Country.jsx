@@ -1,4 +1,4 @@
-const Country = ({ country, handleVisitedCountry }) => {
+const Country = ({ country, handleVisitedCountry, handleVisitedFlags }) => {
   const { name, flags, population, area, cca3 } = country;
   const [visited, setVisited] = useState(false);
 
@@ -6,7 +6,6 @@ const Country = ({ country, handleVisitedCountry }) => {
     // setVisited(true);
     setVisited(!visited);
   };
-
 
   return (
     <div className={`country ${visited ? "visited" : "none-visited"}`}>
@@ -16,9 +15,13 @@ const Country = ({ country, handleVisitedCountry }) => {
       <p>Area : {area}</p>
       <p>Code : {cca3}</p>
 
-      <button onClick={() => handleVisitedCountry(country)}>Mark Visited</button>
+      <button onClick={() => handleVisitedCountry(country)}>
+        Mark Visited
+      </button>
       <br />
-
+      <button onClick={() => handleVisitedFlags(country.flags.png)}>
+        Add Flags
+      </button>
       <button onClick={handleVisited}>{visited ? "visited" : "going"}</button>
       {/* {visited && "I have visited this Country"} */}
       {visited ? "I have visited this Country" : "I want to visit"}
